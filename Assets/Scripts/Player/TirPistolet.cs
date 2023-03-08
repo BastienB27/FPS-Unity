@@ -1,12 +1,12 @@
 
 using UnityEngine;
 
-public class Tir : MonoBehaviour
+public class TirPistolet : MonoBehaviour
 {
 
-    public float degat = 10f;
+    public float degat = 15f;
     public float portée = 100f;
-    public float cadence = 15f;
+    public float cadence = 2f;
 
     public Camera fpsCam;
     public ParticleSystem Départ_du_coup;
