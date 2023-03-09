@@ -4,6 +4,9 @@ using UnityEngine;
 public class TirPistolet : MonoBehaviour
 {
 
+    public AudioClip Glock17; // ajoutez une variable pour l'AudioClip
+    private AudioSource audioSource;
+
     public float degatP = 8f;
     public float portéeP = 100f;
     public float cadenceP = 5f;
@@ -22,6 +25,7 @@ public class TirPistolet : MonoBehaviour
     public Animator animationP;
 
     void Start (){
+        audioSource = GetComponent<AudioSource>();
         MunChargeurP = MunitionCapacitéP;
     }
 
@@ -71,6 +75,7 @@ public class TirPistolet : MonoBehaviour
 
     void Shoot()
     {
+        GetComponent<AudioSource>().PlayOneShot(Glock17);
         Départ_du_coup.Play(); // Effet du tir
         MunChargeurP --;
 

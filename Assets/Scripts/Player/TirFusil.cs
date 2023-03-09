@@ -4,6 +4,9 @@ using UnityEngine;
 public class TirFusil : MonoBehaviour
 {
 
+    public AudioClip M4_gunshot; // ajoutez une variable pour l'AudioClip
+    private AudioSource audioSource;
+
     public float degat = 10f;
     public float portée = 100f;
     public float cadence = 15f;
@@ -21,7 +24,9 @@ public class TirFusil : MonoBehaviour
 
     public Animator animationF;
 
+
     void Start (){
+        audioSource = GetComponent<AudioSource>();
         MunChargeur = MunitionCapacité;
     }
 
@@ -71,6 +76,7 @@ public class TirFusil : MonoBehaviour
     }
     void Shoot()
     {
+        GetComponent<AudioSource>().PlayOneShot(M4_gunshot);
         Départ_du_coup.Play(); // Effet du tir
         MunChargeur --;
 

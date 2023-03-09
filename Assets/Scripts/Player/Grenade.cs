@@ -5,6 +5,8 @@ using UnityEngine;
 public class Grenade : MonoBehaviour
 
 {
+    public AudioClip explosionSound; // ajoutez une variable pour l'AudioClip
+    private AudioSource audioSourceG;
 
     public float retardement = 3f;
     public float rayon = 5f;
@@ -21,6 +23,7 @@ public class Grenade : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSourceG = GetComponent<AudioSource>();
         compteRebours = retardement;
     }
 
@@ -35,6 +38,7 @@ public class Grenade : MonoBehaviour
     }
 
     void Explose(){
+        GetComponent<AudioSource>().PlayOneShot(explosionSound);
         GameObject grenadeClone = Instantiate(effetExplosion, transform.position, transform.rotation); // Effet explosion
         Collider[] collision = Physics.OverlapSphere(transform.position, rayon); // Recupere dans une liste tous les objets dans rayon
 
