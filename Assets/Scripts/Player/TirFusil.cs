@@ -1,4 +1,4 @@
-
+using System.Collections;
 using UnityEngine;
 
 public class TirFusil : MonoBehaviour
@@ -8,14 +8,34 @@ public class TirFusil : MonoBehaviour
     public float portée = 100f;
     public float cadence = 15f;
 
+    public int MunitionCapacité = 30;
+    private int MunChargeur;
+    public float Rechargement = 3f;
+    private bool Recharge = false;
+
     public Camera fpsCam;
     public ParticleSystem Départ_du_coup;
     public GameObject impacte;
 
     private float cadence_tir = 0f;
 
+    public Animator animationF;
+
+    void Start (){
+        MunChargeur = MunitionCapacité;
+    }
+
     void Update()
     {
+
+        if (Recharge){ // Empeche de recharger a chaque frame du 0 munitions
+            return; // Empeche de faire les autres méthodes
+        }
+
+        if (MunChargeur <= 0){
+            StartCoroutine(Recharger()); // Permet d'utiliser IEnumerator
+            return;
+        }
 
         if(Input.GetKey(KeyCode.Mouse0) && Time.time >= cadence_tir)
         {
@@ -24,9 +44,24 @@ public class TirFusil : MonoBehaviour
         }   
     }
 
+    IEnumerator Recharger () {
+        Recharge = true; 
+
+        Debug.Log("Rechargement...");
+
+        animationF.SetBool("Rechargement", true); // Passe l'animation de rechargement en true
+        yield return new WaitForSeconds(Rechargement - .25f); // Permet d'attendre (Rechargement) secondes - 0.25 pour eviter de tirer pendant lanimation
+        animationF.SetBool("Rechargement", false); // Passe l'animation de rechargement en false
+        yield return new WaitForSeconds(.25f); // Permet d'attendre la fin de l'animation pour pouvoir re tirer
+
+        MunChargeur = MunitionCapacité;
+
+        Recharge = false;
+    }
     void Shoot()
     {
         Départ_du_coup.Play(); // Effet du tir
+        MunChargeur --;
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, portée)){ // Si le Raycast touche un truc dans une portée de "portée" sort les info dans "hit"

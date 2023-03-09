@@ -361,7 +361,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh57092
+  m_Name: pb_Mesh25428
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5789,7 +5789,7 @@ GameObject:
   - component: {fileID: 783669636}
   - component: {fileID: 783669635}
   - component: {fileID: 783669634}
-  - component: {fileID: 783669633}
+  - component: {fileID: 783669637}
   m_Layer: 0
   m_Name: Pistolet
   m_TagString: Untagged
@@ -5813,24 +5813,6 @@ Transform:
   m_Father: {fileID: 1207538237}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -272.049, z: 0}
---- !u!114 &783669633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783669631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e8f69d4fb7bb4d91b1b1abdc9a5b45d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  degat: 10
-  "port\xE9e": 100
-  cadence: 15
-  fpsCam: {fileID: 1298711717}
-  "D\xE9part_du_coup": {fileID: 1654592928}
-  impacte: {fileID: 1955086860}
 --- !u!65 &783669634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5894,6 +5876,27 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783669631}
   m_Mesh: {fileID: 4300000, guid: b3248db90896a6f46a0cdb09d671a88f, type: 3}
+--- !u!114 &783669637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783669631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b36c58419775428e91af0aa1db9b89f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  degatP: 8
+  "port\xE9eP": 100
+  cadenceP: 5
+  "MunitionCapacit\xE9P": 17
+  RechargementP: 1
+  fpsCam: {fileID: 1298711717}
+  "D\xE9part_du_coup": {fileID: 629915084}
+  impacte: {fileID: 1955086860}
+  animationP: {fileID: 1207538239}
 --- !u!1 &803135190
 GameObject:
   m_ObjectHideFlags: 0
@@ -6427,7 +6430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1199251409}
   m_LocalRotation: {x: -0, y: -0.6943517, z: -0, w: -0.7196359}
-  m_LocalPosition: {x: 0.43499947, y: -0.46300006, z: 0.46100044}
+  m_LocalPosition: {x: 0.4349995, y: -0.4630001, z: 0.46100044}
   m_LocalScale: {x: 2.8024995, y: 2.556452, z: 3.3649623}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6513,9 +6516,12 @@ MonoBehaviour:
   degat: 10
   "port\xE9e": 100
   cadence: 15
+  "MunitionCapacit\xE9": 30
+  Rechargement: 3
   fpsCam: {fileID: 1298711717}
   "D\xE9part_du_coup": {fileID: 629915084}
   impacte: {fileID: 1955086860}
+  animationF: {fileID: 1207538239}
 --- !u!1 &1207538236
 GameObject:
   m_ObjectHideFlags: 0
@@ -6526,6 +6532,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1207538237}
   - component: {fileID: 1207538238}
+  - component: {fileID: 1207538239}
   m_Layer: 0
   m_Name: Armes
   m_TagString: Untagged
@@ -6563,6 +6570,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   "armeS\xE9lectionn\xE9e": 0
+--- !u!95 &1207538239
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207538236}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ea98326db05847af8d3ce1b8a15dcd6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1254840747
 GameObject:
   m_ObjectHideFlags: 0
@@ -7179,7 +7206,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh57076
+  m_Name: pb_Mesh25412
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
