@@ -31,6 +31,10 @@ public class TirPistolet : MonoBehaviour
         // Permet de changer d'arme pendant un rechargement, puis de le rependre en revenant dessus
     }
 
+    void OnGUI(){
+        GUI.Label(new Rect(10, Screen.height - 80, 200, 20), MunChargeurP + "/" + MunitionCapacitéP, new GUIStyle() { fontSize = 60 });
+    }
+
     void Update()
     {
 
@@ -38,7 +42,7 @@ public class TirPistolet : MonoBehaviour
             return; // Empeche de faire les autres méthodes
         }
 
-        if (MunChargeurP <= 0){
+        if (MunChargeurP <= 0 || Input.GetKey(KeyCode.R)){
             StartCoroutine(RechargerP()); // Permet d'utiliser IEnumerator
             return;
         }

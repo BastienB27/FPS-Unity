@@ -25,6 +25,10 @@ public class TirFusil : MonoBehaviour
         MunChargeur = MunitionCapacité;
     }
 
+    void OnGUI(){
+        GUI.Label(new Rect(10, Screen.height - 80, 200, 20), MunChargeur + "/" + MunitionCapacité, new GUIStyle() { fontSize = 60 });
+    }
+
     void OnEnable(){ // Appelé tout le temps pas comme Start
         Recharge = false;
         animationF.SetBool("Rechargement", false);
@@ -38,7 +42,7 @@ public class TirFusil : MonoBehaviour
             return; // Empeche de faire les autres méthodes
         }
 
-        if (MunChargeur <= 0){
+        if (MunChargeur <= 0 || Input.GetKey(KeyCode.R)){
             StartCoroutine(Recharger()); // Permet d'utiliser IEnumerator
             return;
         }
@@ -47,6 +51,7 @@ public class TirFusil : MonoBehaviour
         {
             cadence_tir = Time.time + 1f/cadence;
             Shoot();
+            
         }   
     }
 
