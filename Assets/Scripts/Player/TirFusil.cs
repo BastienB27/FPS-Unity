@@ -25,6 +25,12 @@ public class TirFusil : MonoBehaviour
         MunChargeur = MunitionCapacité;
     }
 
+    void OnEnable(){ // Appelé tout le temps pas comme Start
+        Recharge = false;
+        animationF.SetBool("Rechargement", false);
+        // Permet de changer d'arme pendant un rechargement, puis de le rependre en revenant dessus
+    }
+
     void Update()
     {
 

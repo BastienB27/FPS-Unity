@@ -25,6 +25,12 @@ public class TirPistolet : MonoBehaviour
         MunChargeurP = MunitionCapacitéP;
     }
 
+    void OnEnable(){ // Appelé tout le temps pas comme Start
+        RechargeP = false;
+        animationP.SetBool("Rechargement", false);
+        // Permet de changer d'arme pendant un rechargement, puis de le rependre en revenant dessus
+    }
+
     void Update()
     {
 
