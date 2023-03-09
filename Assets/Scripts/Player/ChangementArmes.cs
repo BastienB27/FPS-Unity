@@ -31,9 +31,6 @@ public class ChangementArmes : MonoBehaviour
        if (Input.GetKeyDown((KeyCode)160) && transform.childCount >= 2){ // Touche 2
             armeSélectionnée = 1;
         }
-        if (Input.GetKeyDown(KeyCode.G) && transform.childCount >= 3){ // Touche 3
-            armeSélectionnée = 2;
-        }
 
         if (ArmePrécédente != armeSélectionnée){
             ArmeSélectionnée();
